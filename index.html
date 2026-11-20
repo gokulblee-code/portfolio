@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GokulBlee | Full-Stack & AI Solutions Engineer</title>
+  <meta name="description" content="Portfolio of GokulBlee — Full-Stack Developer specializing in Python, Django, React, and applied AI systems." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            surface: {
+              DEFAULT: '#0b0f19',
+              card: '#111827',
+              border: '#1f293d',
+              hover: '#1a2234'
+            },
+            brand: {
+              blue: '#3b82f6',
+              cyan: '#06b6d4',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #f3f4f6;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-surface font-sans selection:bg-brand-blue selection:text-white">
+
+  <div class="fixed inset-0 grid-bg pointer-events-none -z-10"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-600/10 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-surface/80 border-b border-surface-border">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-bold text-lg tracking-tight hover:text-brand-blue transition-colors flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-blue"></span>
+        GokulBlee
+      </a>
+      
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-400">
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#contact" class="px-3.5 py-1.5 rounded-lg bg-surface-card border border-surface-border hover:border-gray-500 text-white transition-all">
+          Contact
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-16 md:py-24 space-y-28">
+
+    <!-- Hero Section -->
+    <section class="space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Available for full-time engineering roles & freelance projects
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-3xl leading-[1.15]">
+        Building scalable web applications & <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">applied AI platforms.</span>
+      </h1>
+
+      <p class="text-lg text-gray-400 max-w-2xl leading-relaxed">
+        I am a Full-Stack & AI Solutions Developer specializing in <strong class="text-gray-200">Python, Django, React</strong>, and <strong class="text-gray-200">computer vision architectures</strong>. Focused on clean system design, performant APIs, and end-to-end product engineering.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-4">
+        <a href="#projects" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-500/20">
+          Explore Projects
+        </a>
+        <a href="https://github.com/gokulblee-code" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface-card border border-surface-border hover:bg-surface-hover text-gray-200 font-medium text-sm transition-all flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
+        </a>
+        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface-card border border-surface-border hover:bg-surface-hover text-gray-200 font-medium text-sm transition-all flex items-center gap-2">
+          LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="space-y-8">
+      <div class="space-y-2">
+        <h2 class="text-xs uppercase tracking-widest font-mono text-brand-blue">Engineering Showcase</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Applications</h3>
+        <p class="text-sm text-gray-400">Architected for real-world impact, reliability, and scale.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Project 1: Derma-AI -->
+        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Applied AI & Vision</span>
+              <a href="https://github.com/gokulblee-code/Derma-Ai" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+            <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              DermaAI — Skin Disease Diagnostic Platform
+            </h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Clinical diagnostic platform utilizing Meta's <strong>DINOv2 Vision Transformer</strong>. Features role-based portals for patients, doctors, hospitals, and ambulance emergency dispatch.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Python</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Django</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">DINOv2</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">PyTorch</span>
+            </div>
+          </div>
+          <div class="pt-6">
+            <a href="https://github.com/gokulblee-code/Derma-Ai" target="_blank" class="text-xs font-semibold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1">
+              View Repository & Architecture &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: CareSphere EHR -->
+        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Healthcare EHR</span>
+              <a href="https://github.com/gokulblee-code/UHN-CARESPEHERE-" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+            <h4 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+              CareSphere — Universal Health Record (UHN)
+            </h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Hospital and patient record management system introducing the Universal Health Number (UHN) for centralized medical history and data security.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Django</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">PostgreSQL / SQLite</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">REST APIs</span>
+            </div>
+          </div>
+          <div class="pt-6">
+            <a href="https://github.com/gokulblee-code/UHN-CARESPEHERE-" target="_blank" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1">
+              View Repository & Architecture &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3: Realtime Chat -->
+        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">Realtime Systems</span>
+              <a href="https://github.com/gokulblee-code/Chat-app" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+            <h4 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+              Full-Stack Realtime Messaging System
+            </h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Bi-directional messaging platform with WebSockets. Features online presence, low-latency messaging, and room management.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">React</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Node.js</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Express</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Socket.io</span>
+            </div>
+          </div>
+          <div class="pt-6">
+            <a href="https://github.com/gokulblee-code/Chat-app" target="_blank" class="text-xs font-semibold text-purple-400 hover:text-purple-300 inline-flex items-center gap-1">
+              View Repository & Code &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4: Inventory Agent -->
+        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Automation & Agents</span>
+              <a href="https://github.com/gokulblee-code/invnetroy-agent-" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+            <h4 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+              Autonomous Inventory Management Agent
+            </h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Intelligent inventory tracking workflow automating stock monitoring, threshold alerts, and inventory reporting routines.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Python</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Automation</span>
+              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">APIs</span>
+            </div>
+          </div>
+          <div class="pt-6">
+            <a href="https://github.com/gokulblee-code/invnetroy-agent-" target="_blank" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1">
+              View Repository & Code &rarr;
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="space-y-8">
+      <div class="space-y-2">
+        <h2 class="text-xs uppercase tracking-widest font-mono text-brand-blue">Technical Capabilities</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Core Competencies</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
+          <div class="flex items-center gap-2 text-white font-semibold text-base">
+            <span class="w-2 h-2 rounded bg-blue-500"></span> Backend Engineering
+          </div>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li class="flex items-center justify-between font-mono text-xs"><span>Python (3.x)</span><span class="text-gray-500">Advanced</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Django & DRF</span><span class="text-gray-500">Advanced</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>RESTful API Architecture</span><span class="text-gray-500">Advanced</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>PostgreSQL / SQLite</span><span class="text-gray-500">Proficient</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Node.js / Express</span><span class="text-gray-500">Proficient</span></li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
+          <div class="flex items-center gap-2 text-white font-semibold text-base">
+            <span class="w-2 h-2 rounded bg-cyan-400"></span> AI & Computer Vision
+          </div>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li class="flex items-center justify-between font-mono text-xs"><span>Vision Transformers (DINOv2)</span><span class="text-gray-500">Applied</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>PyTorch & OpenCV</span><span class="text-gray-500">Applied</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Autonomous Agent Workflows</span><span class="text-gray-500">Applied</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Model Inference & Pipelines</span><span class="text-gray-500">Proficient</span></li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
+          <div class="flex items-center gap-2 text-white font-semibold text-base">
+            <span class="w-2 h-2 rounded bg-indigo-400"></span> Frontend & Ecosystem
+          </div>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li class="flex items-center justify-between font-mono text-xs"><span>React (Hooks & State)</span><span class="text-gray-500">Proficient</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>JavaScript (ES6+)</span><span class="text-gray-500">Proficient</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Tailwind CSS</span><span class="text-gray-500">Advanced</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Git & GitHub Workflow</span><span class="text-gray-500">Advanced</span></li>
+            <li class="flex items-center justify-between font-mono text-xs"><span>Socket.io / WebSockets</span><span class="text-gray-500">Proficient</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Hire Section -->
+    <section id="contact" class="p-8 md:p-12 rounded-2xl bg-gradient-to-b from-surface-card to-surface-hover border border-surface-border text-center space-y-6">
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Let's build something exceptional.</h3>
+      <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+        Whether you are hiring for an engineering role, seeking a full-stack consultant, or launching an AI product, my inbox is open.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="mailto:gokulblee-code@users.noreply.github.com" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Send an Email
+        </a>
+        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface border border-surface-border hover:border-gray-500 text-white font-medium text-sm transition-all flex items-center gap-2">
+          Connect on LinkedIn
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-surface-border py-8 text-center text-xs text-gray-500">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 GokulBlee. Engineered with clean web standards.</span>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/gokulblee-code" class="hover:text-gray-300 transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" class="hover:text-gray-300 transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
