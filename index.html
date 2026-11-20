@@ -1,328 +1,957 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GokulBlee | Vibe Code Developer • Antigravity • Git • VS Code</title>
-  <meta name="description" content="Portfolio of GokulBlee — Vibe Code Developer building high-impact software in any language with core algorithmic logic. Pro in Antigravity, Git, and VS Code." />
-  
+  <title>GokulBlee | Elite Vibe Coder & Systems Architect</title>
+  <meta name="description" content="GokulBlee — Vibe Coder & Systems Architect. Turning raw algorithmic logic into production systems in any language. Pro in Antigravity, Git, and VS Code." />
+
+  <!-- Fonts: Inter Display + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons & Tailwind CSS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            surface: {
-              DEFAULT: '#0b0f19',
-              card: '#111827',
-              border: '#1f293d',
-              hover: '#1a2234'
-            },
             brand: {
-              blue: '#3b82f6',
-              cyan: '#06b6d4',
+              primary: '#6366f1',
+              accent: '#38bdf8',
               emerald: '#10b981',
+              purple: '#a855f7',
               discord: '#5865F2'
+            },
+            dark: {
+              950: '#030712',
+              900: '#0b0f19',
+              850: '#111827',
+              800: '#161f33',
+              700: '#1f293d',
+              border: 'rgba(255, 255, 255, 0.08)',
+              hover: 'rgba(255, 255, 255, 0.12)'
+            }
+          },
+          animation: {
+            'border-beam': 'borderBeam 8s linear infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'gradient-x': 'gradientX 8s ease infinite',
+          },
+          keyframes: {
+            borderBeam: {
+              '0%, 100%': { transform: 'translateX(-100%)' },
+              '50%': { transform: 'translateX(100%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            gradientX: {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
             }
           }
         }
       }
     }
   </script>
+
   <style>
     body {
-      background-color: #0b0f19;
+      background-color: #030712;
       color: #f3f4f6;
+      overflow-x: hidden;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
-    .grid-bg {
-      background-size: 40px 40px;
+
+    /* Ambient Spotlight grid */
+    .hero-grid {
       background-image: 
+        radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18), transparent 45%),
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Interactive Spotlight Card effect */
+    .spotlight-card {
+      position: relative;
+      background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(99, 102, 241, 0.08), transparent 40%), #0b0f19;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .spotlight-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+
+    /* Custom Glassmorphism */
+    .glass-panel {
+      background: rgba(11, 15, 25, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Shimmer Border */
+    .shimmer-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(99, 102, 241, 0.4) 60deg, transparent 120deg);
+      animation: rotateBeam 6s linear infinite;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .shimmer-card:hover::before {
+      opacity: 1;
+    }
+    @keyframes rotateBeam {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #374151;
     }
   </style>
 </head>
-<body class="min-h-screen bg-surface font-sans selection:bg-brand-blue selection:text-white">
+<body class="min-h-screen selection:bg-brand-primary selection:text-white">
 
-  <div class="fixed inset-0 grid-bg pointer-events-none -z-10"></div>
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-600/10 to-transparent blur-3xl pointer-events-none -z-10"></div>
+  <!-- Interactive Background Canvas (Matrix / Constellation) -->
+  <div class="fixed inset-0 hero-grid pointer-events-none -z-10"></div>
+  <div class="fixed top-[-100px] left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-indigo-500/15 via-blue-500/10 to-transparent blur-[120px] pointer-events-none -z-10"></div>
 
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-surface/80 border-b border-surface-border">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-bold text-lg tracking-tight hover:text-brand-blue transition-colors flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-brand-blue"></span>
-        GokulBlee
-      </a>
+  <!-- Command Palette Modal (Cmd+K) -->
+  <div id="cmd-palette" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-start justify-center pt-24 px-4 transition-all">
+    <div class="w-full max-w-xl glass-panel rounded-2xl shadow-2xl border border-white/10 overflow-hidden transform scale-95 opacity-0 transition-all duration-200" id="cmd-box">
+      <div class="p-4 border-b border-white/10 flex items-center gap-3">
+        <i data-lucide="terminal" class="w-5 h-5 text-brand-primary"></i>
+        <input type="text" id="cmd-input" placeholder="Type a command or jump to... (e.g. projects, discord, skills, derma)" class="w-full bg-transparent text-white placeholder-gray-500 focus:outline-none text-sm font-mono" />
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-400">ESC</span>
+      </div>
+      <div class="p-2 max-h-80 overflow-y-auto space-y-1 text-sm font-medium" id="cmd-list">
+        <button onclick="navigateSection('projects')" class="w-full p-2.5 rounded-lg hover:bg-white/5 text-left flex items-center justify-between text-gray-300 hover:text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="layers" class="w-4 h-4 text-blue-400"></i> Featured Applications</span>
+          <span class="text-xs text-gray-500 font-mono">#projects</span>
+        </button>
+        <button onclick="navigateSection('arsenal')" class="w-full p-2.5 rounded-lg hover:bg-white/5 text-left flex items-center justify-between text-gray-300 hover:text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="cpu" class="w-4 h-4 text-indigo-400"></i> Antigravity & Vibe Coder Arsenal</span>
+          <span class="text-xs text-gray-500 font-mono">#arsenal</span>
+        </button>
+        <button onclick="navigateSection('terminal')" class="w-full p-2.5 rounded-lg hover:bg-white/5 text-left flex items-center justify-between text-gray-300 hover:text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="code-2" class="w-4 h-4 text-emerald-400"></i> Interactive Live Terminal</span>
+          <span class="text-xs text-gray-500 font-mono">#terminal</span>
+        </button>
+        <button onclick="window.open('https://discord.gg/yem2HkTGN', '_blank')" class="w-full p-2.5 rounded-lg hover:bg-white/5 text-left flex items-center justify-between text-gray-300 hover:text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="message-square" class="w-4 h-4 text-brand-discord"></i> Join Discord Server</span>
+          <span class="text-xs text-gray-500 font-mono">discord.gg</span>
+        </button>
+        <button onclick="copyToClipboard('gokulblee-code@users.noreply.github.com', 'Email')" class="w-full p-2.5 rounded-lg hover:bg-white/5 text-left flex items-center justify-between text-gray-300 hover:text-white">
+          <span class="flex items-center gap-2.5"><i data-lucide="mail" class="w-4 h-4 text-red-400"></i> Copy Contact Email</span>
+          <span class="text-xs text-gray-500 font-mono">copy</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-brand-primary/40 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="w-2 h-2 rounded-full bg-brand-emerald animate-ping"></div>
+    <span id="toast-msg" class="text-sm font-medium text-white">Copied to clipboard!</span>
+  </div>
+
+  <!-- Floating Navigation Header -->
+  <header class="sticky top-4 z-40 max-w-5xl mx-auto px-4">
+    <div class="glass-panel rounded-2xl px-5 h-16 flex items-center justify-between shadow-2xl border border-white/10">
       
-      <nav class="flex items-center gap-6 text-sm font-medium text-gray-400">
-        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-        <a href="#skills" class="hover:text-white transition-colors">Skills & Tooling</a>
-        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      <!-- Brand & Status -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 p-[1px] shadow-lg shadow-indigo-500/20">
+          <div class="w-full h-full bg-dark-950 rounded-[7px] flex items-center justify-center font-mono font-bold text-sm text-white group-hover:scale-95 transition-transform">
+            G
+          </div>
+        </div>
+        <div>
+          <div class="font-bold text-sm text-white tracking-tight flex items-center gap-1.5">
+            GokulBlee
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-primary/20 text-indigo-300 border border-brand-primary/30 uppercase tracking-wider">VIBE CODER</span>
+          </div>
+          <div class="text-[11px] text-gray-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald animate-pulse"></span> Logic & Systems Architect
+          </div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-gray-400">
+        <a href="#projects" class="hover:text-white transition-colors">Showcase</a>
+        <a href="#arsenal" class="hover:text-white transition-colors">The Arsenal</a>
+        <a href="#terminal" class="hover:text-white transition-colors">Interactive CLI</a>
+        <a href="#skills" class="hover:text-white transition-colors">Capabilities</a>
+      </nav>
+
+      <!-- Action Cluster -->
+      <div class="flex items-center gap-3">
+        <!-- Cmd+K Button -->
+        <button onclick="toggleCmdPalette()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 text-xs font-mono text-gray-400 hover:text-white transition-all">
+          <i data-lucide="search" class="w-3.5 h-3.5"></i>
+          <span>Cmd+K</span>
+        </button>
+
+        <!-- Discord Button -->
+        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-brand-discord/20 border border-brand-discord/30 hover:bg-brand-discord text-white text-xs font-semibold transition-all flex items-center gap-1.5 shadow-lg shadow-indigo-500/10">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
           Discord
         </a>
-        <a href="#contact" class="px-3.5 py-1.5 rounded-lg bg-surface-card border border-surface-border hover:border-gray-500 text-white transition-all">
-          Contact
+
+        <!-- Connect Button -->
+        <a href="#contact" class="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-semibold transition-all shadow-lg shadow-blue-500/25">
+          Work With Me
         </a>
-      </nav>
+      </div>
+
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-6 py-16 md:py-24 space-y-28">
+  <!-- Hero Section with Futuristic Code Telemetry -->
+  <main class="max-w-6xl mx-auto px-6 pt-16 pb-32 space-y-36">
 
-    <!-- Hero Section -->
-    <section class="space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        Available for vibe coding projects, engineering roles & freelance
+    <section class="space-y-12">
+      
+      <!-- Top Announcement Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-white/10 text-xs font-mono">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span class="text-gray-300 font-semibold">POLYGLOT VIBE CODING & SYSTEM ARCHITECTURE</span>
+        <span class="text-gray-600">|</span>
+        <span class="text-indigo-400">PRO IN ANTIGRAVITY • GIT • VS CODE</span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-3xl leading-[1.15]">
-        Vibe code developer in any language with <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">deep logic & system design.</span>
-      </h1>
-
-      <p class="text-lg text-gray-400 max-w-2xl leading-relaxed">
-        I build high-impact applications in <strong class="text-gray-200">any programming language</strong> powered by rock-solid algorithmic logic and architectural thinking. A pro in <strong class="text-gray-200">Antigravity, Git, and VS Code</strong>, turning complex ideas into production-ready software with speed and precision.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-4 pt-4">
-        <a href="#projects" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-500/20">
-          Explore Projects
-        </a>
-        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-[#5865F2] hover:bg-[#4752c4] text-white font-medium text-sm transition-all shadow-lg shadow-indigo-500/20 flex items-center gap-2">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Join Discord
-        </a>
-        <a href="https://github.com/gokulblee-code" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface-card border border-surface-border hover:bg-surface-hover text-gray-200 font-medium text-sm transition-all flex items-center gap-2">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub Profile
-        </a>
-        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface-card border border-surface-border hover:bg-surface-hover text-gray-200 font-medium text-sm transition-all flex items-center gap-2">
-          LinkedIn
-        </a>
+      <!-- Hero Pitch -->
+      <div class="space-y-6 max-w-4xl">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+          Turning raw algorithmic logic into <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">production software in any language.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-400 leading-relaxed font-normal max-w-3xl">
+          I don't just write code — I orchestrate systems. Combining deep algorithmic reasoning, vision transformers, and high-velocity vibe coding in <strong>Antigravity, Git, and VS Code</strong> to deliver enterprise architectures in record time.
+        </p>
       </div>
+
+      <!-- Action Cluster -->
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-xl shadow-blue-600/30 flex items-center gap-2 group">
+          <span>Explore Architecture Bento</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-surface-card border border-white/10 hover:border-brand-discord text-white font-semibold text-sm transition-all flex items-center gap-2.5 shadow-lg group">
+          <svg class="w-4 h-4 fill-brand-discord" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <span>Join Discord Community</span>
+        </a>
+        <a href="https://github.com/gokulblee-code" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-surface-card border border-white/10 hover:border-white/30 text-gray-300 hover:text-white font-semibold text-sm transition-all flex items-center gap-2">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub</span>
+        </a>
+        <button onclick="copyToClipboard('gokulblee-code@users.noreply.github.com', 'Email')" class="px-4 py-3.5 rounded-xl border border-white/10 hover:bg-white/5 text-gray-400 hover:text-white transition-all text-sm font-mono flex items-center gap-2">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span>gokulblee@...</span>
+        </button>
+      </div>
+
+      <!-- Live Vibe Coder Interactive Telemetry Box -->
+      <div class="glass-panel rounded-2xl border border-white/10 p-5 shadow-2xl relative overflow-hidden">
+        <div class="flex items-center justify-between pb-4 border-b border-white/10 text-xs font-mono text-gray-400">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span class="ml-2 text-gray-300 font-semibold">gokulblee@antigravity-core:~</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-indigo-400 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> VIBE PIPELINE ACTIVE</span>
+            <span class="text-emerald-400">100% HEALTH</span>
+          </div>
+        </div>
+
+        <div class="pt-4 font-mono text-xs sm:text-sm space-y-2 text-gray-300 leading-relaxed overflow-x-auto">
+          <p><span class="text-blue-400">~ $</span> <span class="text-emerald-400">antigravity</span> compile-system --target="any-language" --architecture="production"</p>
+          <p class="text-gray-400">[info] Initializing polyglot algorithmic engine across Python, Django, React, Socket.io...</p>
+          <p class="text-gray-400">[model] Loading Vision Transformer: <span class="text-indigo-300">Jayanth2002/dinov2-base-finetuned-SkinDisease</span></p>
+          <p class="text-gray-400">[ehr] Universal Health Number (UHN) 6-digit cryptographic routing established.</p>
+          <p class="text-gray-400">[realtime] Low-latency bi-directional WebSocket cluster live on port 5000.</p>
+          <p class="text-emerald-400 font-semibold">[ready] Deployment synced. Zero technical debt. Vibe coding velocity: 10x.</p>
+        </div>
+      </div>
+
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="space-y-8">
-      <div class="space-y-2">
-        <h2 class="text-xs uppercase tracking-widest font-mono text-brand-blue">Engineering Showcase</h2>
-        <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Applications</h3>
-        <p class="text-sm text-gray-400">Architected with clean logic, fast execution, and real-world utility.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Project 1: Derma-AI -->
-        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20">Applied AI & Vision</span>
-              <a href="https://github.com/gokulblee-code/Derma-Ai" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              </a>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-              DermaAI — Skin Disease Diagnostic Platform
-            </h4>
-            <p class="text-sm text-gray-400 leading-relaxed">
-              Clinical diagnostic platform utilizing Meta's <strong>DINOv2 Vision Transformer</strong>. Features role-based portals for patients, doctors, hospitals, and ambulance emergency dispatch.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Python</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Django</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">DINOv2</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">PyTorch</span>
-            </div>
-          </div>
-          <div class="pt-6">
-            <a href="https://github.com/gokulblee-code/Derma-Ai" target="_blank" class="text-xs font-semibold text-blue-400 hover:text-blue-300 inline-flex items-center gap-1">
-              View Repository & Architecture &rarr;
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 2: CareSphere EHR -->
-        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Healthcare EHR</span>
-              <a href="https://github.com/gokulblee-code/UHN-CARESPEHERE-" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              </a>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-              CareSphere — Universal Health Record (UHN)
-            </h4>
-            <p class="text-sm text-gray-400 leading-relaxed">
-              Hospital and patient record management system introducing the Universal Health Number (UHN) for centralized medical history and data security.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Django</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">PostgreSQL / SQLite</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">REST APIs</span>
-            </div>
-          </div>
-          <div class="pt-6">
-            <a href="https://github.com/gokulblee-code/UHN-CARESPEHERE-" target="_blank" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1">
-              View Repository & Architecture &rarr;
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 3: Realtime Chat -->
-        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">Realtime Systems</span>
-              <a href="https://github.com/gokulblee-code/Chat-app" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              </a>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-              Full-Stack Realtime Messaging System
-            </h4>
-            <p class="text-sm text-gray-400 leading-relaxed">
-              Bi-directional messaging platform with WebSockets. Features online presence, low-latency messaging, and room management.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">React</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Node.js</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Express</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Socket.io</span>
-            </div>
-          </div>
-          <div class="pt-6">
-            <a href="https://github.com/gokulblee-code/Chat-app" target="_blank" class="text-xs font-semibold text-purple-400 hover:text-purple-300 inline-flex items-center gap-1">
-              View Repository & Code &rarr;
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 4: Inventory Agent -->
-        <article class="p-6 rounded-xl bg-surface-card border border-surface-border hover:border-blue-500/40 transition-all flex flex-col justify-between group">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Automation & Agents</span>
-              <a href="https://github.com/gokulblee-code/invnetroy-agent-" target="_blank" class="text-gray-400 group-hover:text-white transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              </a>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-              Autonomous Inventory Management Agent
-            </h4>
-            <p class="text-sm text-gray-400 leading-relaxed">
-              Intelligent inventory tracking workflow automating stock monitoring, threshold alerts, and inventory reporting routines.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Python</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">Automation</span>
-              <span class="text-xs font-mono text-gray-300 bg-surface px-2.5 py-1 rounded border border-surface-border">APIs</span>
-            </div>
-          </div>
-          <div class="pt-6">
-            <a href="https://github.com/gokulblee-code/invnetroy-agent-" target="_blank" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1">
-              View Repository & Code &rarr;
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Skills & Tooling Section -->
-    <section id="skills" class="space-y-8">
-      <div class="space-y-2">
-        <h2 class="text-xs uppercase tracking-widest font-mono text-brand-blue">Technical Capabilities & Tooling</h2>
-        <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Core Competencies</h3>
+    <!-- SECTION 1: THE VIBE CODER ARSENAL (Why it's elite) -->
+    <section id="arsenal" class="space-y-12">
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono uppercase tracking-wider">
+          The Master's Tooling
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">The Vibe Coder Arsenal</h2>
+        <p class="text-gray-400 max-w-2xl text-sm sm:text-base">
+          Vibe coding isn't guessing — it's commanding elite tools with ruthless logic, precision architecture, and zero friction.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1: Vibe Coding & Tooling -->
-        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
-          <div class="flex items-center gap-2 text-white font-semibold text-base">
-            <span class="w-2 h-2 rounded bg-indigo-500"></span> Vibe Coding & Pro Tooling
+        
+        <!-- Tool 1: Google Antigravity -->
+        <div class="spotlight-card p-8 rounded-2xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="zap" class="w-6 h-6"></i>
           </div>
-          <ul class="space-y-2.5 text-sm text-gray-300">
-            <li class="flex items-center justify-between font-mono text-xs"><span>Google Antigravity</span><span class="text-indigo-400 font-semibold">PRO</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>VS Code Workflow</span><span class="text-indigo-400 font-semibold">PRO</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Git & GitHub CI/CD</span><span class="text-indigo-400 font-semibold">PRO</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Polyglot Logic Design</span><span class="text-gray-400">Advanced</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Autonomous Agent Flows</span><span class="text-gray-400">Advanced</span></li>
-          </ul>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-white">Google Antigravity</h3>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold">PRO LEVEL</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Multi-agent orchestration, complex codebase refactoring, sandbox verification, and terminal automation. Directing AI agent teams to solve hard software engineering bottlenecks.
+          </p>
+          <div class="pt-6 flex flex-wrap gap-2 text-xs font-mono text-gray-400">
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Agent Teams</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Verification Loops</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Zero Friction</span>
+          </div>
         </div>
 
-        <!-- Card 2: AI & Systems -->
-        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
-          <div class="flex items-center gap-2 text-white font-semibold text-base">
-            <span class="w-2 h-2 rounded bg-cyan-400"></span> AI & Computer Vision
+        <!-- Tool 2: Advanced Git Workflow -->
+        <div class="spotlight-card p-8 rounded-2xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="git-branch" class="w-6 h-6"></i>
           </div>
-          <ul class="space-y-2.5 text-sm text-gray-300">
-            <li class="flex items-center justify-between font-mono text-xs"><span>Vision Transformers (DINOv2)</span><span class="text-gray-400">Applied</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>PyTorch & OpenCV</span><span class="text-gray-400">Applied</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Model Inference & Pipelines</span><span class="text-gray-400">Proficient</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Python (Core & Scripting)</span><span class="text-gray-400">Advanced</span></li>
-          </ul>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-white">Git Architecture</h3>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/30 font-bold">PRO LEVEL</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Atomic commit hygiene, branch isolation, complex interactive rebasing, history surgical refactoring (eliminating bot/contributor traces), and automated CI/CD deployment pipelines.
+          </p>
+          <div class="pt-6 flex flex-wrap gap-2 text-xs font-mono text-gray-400">
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Clean History</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">CI/CD Automation</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Orphan Branches</span>
+          </div>
         </div>
 
-        <!-- Card 3: Backend & Architecture -->
-        <div class="p-6 rounded-xl bg-surface-card border border-surface-border space-y-4">
-          <div class="flex items-center gap-2 text-white font-semibold text-base">
-            <span class="w-2 h-2 rounded bg-blue-500"></span> Backend & Web Architectures
+        <!-- Tool 3: VS Code Mastery -->
+        <div class="spotlight-card p-8 rounded-2xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="terminal-square" class="w-6 h-6"></i>
           </div>
-          <ul class="space-y-2.5 text-sm text-gray-300">
-            <li class="flex items-center justify-between font-mono text-xs"><span>Django & REST Framework</span><span class="text-gray-400">Advanced</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>PostgreSQL / SQLite</span><span class="text-gray-400">Proficient</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>React & Tailwind CSS</span><span class="text-gray-400">Advanced</span></li>
-            <li class="flex items-center justify-between font-mono text-xs"><span>Node.js & Socket.io</span><span class="text-gray-400">Proficient</span></li>
-          </ul>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xl font-bold text-white">VS Code Environment</h3>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30 font-bold">PRO LEVEL</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Keyboard-driven navigation, multi-cursor refactoring, custom workspace debugging setups, containerized environments, and seamless LSP configurations across every major language.
+          </p>
+          <div class="pt-6 flex flex-wrap gap-2 text-xs font-mono text-gray-400">
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Multi-LSP</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Docker Containers</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Vim Keybindings</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: BENTO GRID FEATURED ARCHITECTURES -->
+    <section id="projects" class="space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider">
+            Architecture Showcase
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Engineered for Scale & Speed</h2>
+          <p class="text-gray-400 max-w-2xl text-sm sm:text-base">
+            Every application below is built with deep domain logic, production security, and proven tech stacks.
+          </p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <button onclick="filterProjects('all')" class="project-filter-btn px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold" data-filter="all">All (6)</button>
+          <button onclick="filterProjects('ai')" class="project-filter-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white" data-filter="ai">AI & Vision</button>
+          <button onclick="filterProjects('systems')" class="project-filter-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white" data-filter="systems">Full-Stack EHR</button>
+          <button onclick="filterProjects('realtime')" class="project-filter-btn px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white" data-filter="realtime">Realtime & Agents</button>
+        </div>
+      </div>
+
+      <!-- Bento Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Bento Card 1: DermaAI (Large 2-column card) -->
+        <div class="project-card md:col-span-2 spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="ai">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-3 h-3 rounded-full bg-cyan-400"></span>
+                <span class="text-xs font-mono text-cyan-300 font-semibold tracking-wider uppercase">Meta DINOv2 Vision Transformer</span>
+              </div>
+              <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">FLAGSHIP AI</span>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-cyan-400 transition-colors">
+                DermaAI — Skin Disease Diagnostic Platform
+              </h3>
+              <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                Production-grade clinical assistance engine built on Meta's DINOv2 vision transformer (`Jayanth2002/dinov2-base-finetuned-SkinDisease`). Accurately classifies 31 dermatological conditions with confidence thresholding (0.60) and high-severity triage triggers.
+              </p>
+            </div>
+
+            <!-- Architectural Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-gray-400">Portals</div>
+                <div class="text-sm font-bold text-white mt-1">4 Multi-Role</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-gray-400">Vision Model</div>
+                <div class="text-sm font-bold text-white mt-1">Meta DINOv2</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-gray-400">Classification</div>
+                <div class="text-sm font-bold text-white mt-1">31 Diseases</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-gray-400">Remedies</div>
+                <div class="text-sm font-bold text-white mt-1">SerpAPI Sync</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 mt-6">
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Django</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">PyTorch</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Transformers</span>
+            </div>
+            <a href="https://github.com/gokulblee-code/Derma-Ai" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300">
+              <span>EXPLORE REPOSITORY & SPEC</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: CareSphere EHR (1-column card) -->
+        <div class="project-card spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-emerald-400 font-semibold uppercase tracking-wider">Universal Health EHR</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+              CareSphere — UHN Hospital Network
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Enterprise clinical platform introducing the 6-digit <strong>Universal Health Number (UHN)</strong>. Coordinates patients, doctors, hospitals, and ambulances with inter-hospital transfers and emergency broadcasts.
+            </p>
+
+            <ul class="space-y-2 text-xs font-mono text-gray-300 pt-2">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> 5 Access Tiers & Billing</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Ambulance Dispatch & Map</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> KaiAdmin Bootstrap Dashboard</li>
+            </ul>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">Django • Python • SQL</span>
+            <a href="https://github.com/gokulblee-code/UHN-CARESPEHERE-" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-mono text-xs font-bold flex items-center gap-1">
+              <span>VIEW REPO</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 3: Chatty Realtime (1-column card) -->
+        <div class="project-card spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="realtime">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-purple-400 font-semibold uppercase tracking-wider">WebSockets & Presence</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+              Chatty — Realtime Messaging Cluster
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Bi-directional messaging platform with React 18, Express, and Socket.io. Features low-latency room multiplexing, live user typing triggers, and presence detection.
+            </p>
+
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 font-mono text-xs text-gray-300 flex items-center justify-between">
+              <span>Transport</span>
+              <span class="text-purple-300 font-bold">WebSocket (WSS)</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">React 18 • Socket.io • Node</span>
+            <a href="https://github.com/gokulblee-code/Chat-app" target="_blank" class="text-purple-400 hover:text-purple-300 font-mono text-xs font-bold flex items-center gap-1">
+              <span>VIEW REPO</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 4: WhatsApp MCP Inventory Agent (2-column card) -->
+        <div class="project-card md:col-span-2 spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="realtime">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-3 h-3 rounded-full bg-brand-emerald"></span>
+                <span class="text-xs font-mono text-emerald-300 font-semibold tracking-wider uppercase">Model Context Protocol (MCP)</span>
+              </div>
+              <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">AGENTIC AI</span>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                WhatsApp Autonomous Inventory Management Agent
+              </h3>
+              <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                Autonomous inventory cockpit using Model Context Protocol (MCP). Monitors stock levels in real-time, alerts operations on threshold violations, and triggers automated vendor purchase orders directly through WhatsApp APIs.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 font-mono text-xs">
+                <div class="text-gray-400">Architecture</div>
+                <div class="text-white font-bold mt-1">MCP Tooling</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 font-mono text-xs">
+                <div class="text-gray-400">Integration</div>
+                <div class="text-white font-bold mt-1">WhatsApp Webhooks</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 font-mono text-xs">
+                <div class="text-gray-400">Automation</div>
+                <div class="text-white font-bold mt-1">Self-Healing Stock</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Node.js</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">MCP</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">REST APIs</span>
+            </div>
+            <a href="https://github.com/gokulblee-code/invnetroy-agent-" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300">
+              <span>VIEW AGENT REPOSITORY</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 5: TaskPulse Kanban (1-column card) -->
+        <div class="project-card spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-blue-400 font-semibold uppercase tracking-wider">React 19 & Tailwind v4</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              TaskPulse — Drag & Drop Kanban
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed">
+              High-velocity productivity workspace with smooth drag-and-drop mechanics (`@hello-pangea/dnd`), task CRUD modals, priority badges, completion telemetry, and browser state persistence.
+            </p>
+
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300 pt-2">
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">React 19</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Tailwind v4</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Vite 8</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">Frontend Suite</span>
+            <a href="https://github.com/gokulblee-code/TASK-PLUS-" target="_blank" class="text-blue-400 hover:text-blue-300 font-mono text-xs font-bold flex items-center gap-1">
+              <span>VIEW REPO</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento Card 6: Criminal Identification System (1-column card) -->
+        <div class="project-card spotlight-card p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between" data-category="ai">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-amber-400 font-semibold uppercase tracking-wider">Computer Vision & Database</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+              Criminal Facial Identification System
+            </h3>
+
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Centralized biometric and photographic criminal registry platform built on Django. Automates suspect image categorization, evidence indexing, and matching against historical crime records.
+            </p>
+
+            <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300 pt-2">
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Django</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">OpenCV</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">SQLite3</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+            <span class="text-xs font-mono text-gray-400">Security & Biometrics</span>
+            <a href="https://github.com/gokulblee-code/Criminal-identification-app-" target="_blank" class="text-amber-400 hover:text-amber-300 font-mono text-xs font-bold flex items-center gap-1">
+              <span>VIEW REPO</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE TERMINAL SIMULATOR -->
+    <section id="terminal" class="space-y-8">
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider">
+          Interactive CLI
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Try the Vibe Coder Console</h2>
+        <p class="text-gray-400 max-w-2xl text-sm sm:text-base">
+          Type commands directly or click the prompt shortcuts below to test the runtime logic.
+        </p>
+      </div>
+
+      <!-- Quick Action Pills -->
+      <div class="flex flex-wrap gap-2 text-xs font-mono">
+        <span class="text-gray-500 py-1">Quick Run:</span>
+        <button onclick="runCommand('help')" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white">help</button>
+        <button onclick="runCommand('projects')" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white">projects</button>
+        <button onclick="runCommand('arsenal')" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white">arsenal</button>
+        <button onclick="runCommand('discord')" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white">discord</button>
+        <button onclick="runCommand('contact')" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white">contact</button>
+        <button onclick="runCommand('clear')" class="px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20">clear</button>
+      </div>
+
+      <!-- Terminal Window -->
+      <div class="glass-panel rounded-2xl border border-white/10 p-6 shadow-2xl space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono text-gray-400">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 text-gray-300">gokulblee-vibe-shell v2.4</span>
+          </div>
+          <span class="text-gray-500">Press ENTER to submit</span>
+        </div>
+
+        <div id="terminal-output" class="font-mono text-xs sm:text-sm space-y-2 text-gray-300 max-h-72 overflow-y-auto leading-relaxed">
+          <p class="text-gray-400">Welcome to GokulBlee's interactive environment. Type <span class="text-emerald-400 font-bold">'help'</span> for a list of available routines.</p>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2 border-t border-white/10 font-mono text-xs sm:text-sm">
+          <span class="text-emerald-400 font-bold">gokulblee@vibe:~$</span>
+          <input type="text" id="terminal-input" placeholder="Type a command (e.g. projects, contact, skills)..." class="w-full bg-transparent text-white focus:outline-none placeholder-gray-600" autocomplete="off" />
         </div>
       </div>
     </section>
 
-    <!-- Contact & Hire Section -->
-    <section id="contact" class="p-8 md:p-12 rounded-2xl bg-gradient-to-b from-surface-card to-surface-hover border border-surface-border text-center space-y-6">
-      <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Let's build something exceptional.</h3>
-      <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-        Whether you need a vibe coder with sharp logic, a full-stack engineer, an AI system builder, or want to connect on Discord, my channels are open.
-      </p>
+    <!-- SECTION 4: CAPABILITIES & METRICS MATRIX -->
+    <section id="skills" class="space-y-12">
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono uppercase tracking-wider">
+          Polyglot Architecture
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Full-Stack Competencies</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        <!-- Col 1 -->
+        <div class="spotlight-card p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-2 text-white font-bold text-sm">
+            <i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i> Tooling & Flow
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-gray-300">
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Antigravity</span><span class="text-indigo-400 font-bold">PRO</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>VS Code</span><span class="text-indigo-400 font-bold">PRO</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Git Workflow</span><span class="text-indigo-400 font-bold">PRO</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>GitHub Pages</span><span class="text-emerald-400">Mastered</span></li>
+            <li class="flex justify-between"><span>CI/CD Actions</span><span class="text-gray-400">Configured</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="spotlight-card p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-2 text-white font-bold text-sm">
+            <i data-lucide="brain" class="w-4 h-4 text-cyan-400"></i> AI & Computer Vision
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-gray-300">
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Meta DINOv2</span><span class="text-cyan-400 font-bold">Fine-Tuned</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>PyTorch</span><span class="text-cyan-400">Applied</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>OpenCV</span><span class="text-cyan-400">Applied</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>MCP Agents</span><span class="text-emerald-400 font-bold">Built</span></li>
+            <li class="flex justify-between"><span>Transformers</span><span class="text-gray-400">Inference</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="spotlight-card p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-2 text-white font-bold text-sm">
+            <i data-lucide="server" class="w-4 h-4 text-emerald-400"></i> Backend Systems
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-gray-300">
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Python (3.x)</span><span class="text-emerald-400 font-bold">Advanced</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Django & DRF</span><span class="text-emerald-400 font-bold">Advanced</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Node.js & Express</span><span class="text-emerald-400">Proficient</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>PostgreSQL / SQLite</span><span class="text-gray-400">Configured</span></li>
+            <li class="flex justify-between"><span>Socket.io / WSS</span><span class="text-purple-400">Realtime</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="spotlight-card p-6 rounded-2xl space-y-4">
+          <div class="flex items-center gap-2 text-white font-bold text-sm">
+            <i data-lucide="layout" class="w-4 h-4 text-blue-400"></i> Frontend & UI
+          </div>
+          <ul class="space-y-2.5 text-xs font-mono text-gray-300">
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>React 18 & 19</span><span class="text-blue-400 font-bold">Advanced</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Tailwind CSS v4</span><span class="text-blue-400 font-bold">Advanced</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>Vite 8</span><span class="text-blue-400">Proficient</span></li>
+            <li class="flex justify-between border-b border-white/5 pb-1.5"><span>TypeScript / ES6+</span><span class="text-gray-400">Clean</span></li>
+            <li class="flex justify-between"><span>Responsive Layouts</span><span class="text-emerald-400">100%</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: CALL TO ACTION & DIRECT CONTACT -->
+    <section id="contact" class="p-10 sm:p-14 rounded-3xl glass-panel border border-brand-primary/30 relative overflow-hidden text-center space-y-8 shadow-2xl">
+      <div class="max-w-2xl mx-auto space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          DIRECT CHANNELS OPEN
+        </div>
+        <h3 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Let's build high-velocity systems together.</h3>
+        <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+          Looking for a vibe coder who ships production systems with bulletproof logic? Have an AI idea, full-stack product, or engineering role? Reach out directly.
+        </p>
+      </div>
 
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-        <a href="mailto:gokulblee-code@users.noreply.github.com" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Send an Email
+        <a href="mailto:gokulblee-code@users.noreply.github.com" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-xl shadow-blue-500/25 flex items-center gap-2.5">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span>Send an Email</span>
         </a>
-        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-[#5865F2] hover:bg-[#4752c4] text-white font-medium text-sm transition-all shadow-lg shadow-indigo-500/20 flex items-center gap-2">
+        <a href="https://discord.gg/yem2HkTGN" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl bg-brand-discord hover:bg-[#4752c4] text-white font-semibold text-sm transition-all shadow-xl shadow-indigo-500/25 flex items-center gap-2.5">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Join Discord
+          <span>Join Discord Community</span>
         </a>
-        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-surface border border-surface-border hover:border-gray-500 text-white font-medium text-sm transition-all flex items-center gap-2">
-          Connect on LinkedIn
+        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 text-white font-semibold text-sm transition-all flex items-center gap-2.5">
+          <i data-lucide="linkedin" class="w-4 h-4 text-blue-400"></i>
+          <span>LinkedIn</span>
         </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="border-t border-surface-border py-8 text-center text-xs text-gray-500">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span>© 2026 GokulBlee. Engineered with clean web standards.</span>
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-10 text-xs font-mono text-gray-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
+        <span>© 2026 GokulBlee. Vibe Coding & Systems Architecture.</span>
+      </div>
       <div class="flex items-center gap-6">
-        <a href="https://discord.gg/yem2HkTGN" class="text-indigo-400 hover:text-indigo-300 transition-colors">Discord</a>
-        <a href="https://github.com/gokulblee-code" class="hover:text-gray-300 transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" class="hover:text-gray-300 transition-colors">LinkedIn</a>
+        <a href="https://discord.gg/yem2HkTGN" target="_blank" class="hover:text-brand-discord transition-colors">Discord</a>
+        <a href="https://github.com/gokulblee-code" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/gokul-b-8aa694406_" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="hover:text-white transition-colors">Back to top ↑</button>
       </div>
     </div>
   </footer>
+
+  <!-- Interactive Scripts (Spotlight, Filter, Terminal, Cmd Palette) -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mouse Tracking Spotlight Effect for Cards
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Copy to Clipboard Toast
+    function copyToClipboard(text, label) {
+      navigator.clipboard.writeText(text);
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.innerText = `${label} copied to clipboard!`;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // Project Filtering Logic
+    function filterProjects(category) {
+      document.querySelectorAll('.project-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.classList.add('bg-blue-600', 'text-white');
+          btn.classList.remove('bg-white/5', 'text-gray-400');
+        } else {
+          btn.classList.remove('bg-blue-600', 'text-white');
+          btn.classList.add('bg-white/5', 'text-gray-400');
+        }
+      });
+
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Command Palette Logic (Cmd+K)
+    function toggleCmdPalette() {
+      const palette = document.getElementById('cmd-palette');
+      const box = document.getElementById('cmd-box');
+      if (palette.classList.contains('hidden')) {
+        palette.classList.remove('hidden');
+        palette.classList.add('flex');
+        setTimeout(() => {
+          box.classList.remove('scale-95', 'opacity-0');
+          document.getElementById('cmd-input').focus();
+        }, 10);
+      } else {
+        box.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+          palette.classList.add('hidden');
+          palette.classList.remove('flex');
+        }, 150);
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleCmdPalette();
+      }
+      if (e.key === 'Escape') {
+        const palette = document.getElementById('cmd-palette');
+        if (!palette.classList.contains('hidden')) toggleCmdPalette();
+      }
+    });
+
+    document.getElementById('cmd-palette').addEventListener('click', e => {
+      if (e.target === e.currentTarget) toggleCmdPalette();
+    });
+
+    function navigateSection(id) {
+      toggleCmdPalette();
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Interactive Terminal CLI Logic
+    const termInput = document.getElementById('terminal-input');
+    const termOutput = document.getElementById('terminal-output');
+
+    const commands = {
+      help: "Available commands:\n  • projects   - View flagship applications & repositories\n  • arsenal    - Inspect Antigravity, Git, and VS Code tooling\n  • skills     - Full breakdown of technical capabilities\n  • discord    - Open GokulBlee's Discord community invite\n  • contact    - Get email & LinkedIn handles\n  • clear      - Clear terminal screen",
+      projects: "Flagship Architectures:\n  1. DermaAI Vision Transformer (Meta DINOv2)\n  2. CareSphere Universal Health EHR (Django)\n  3. Chatty Messaging Cluster (React 18, Socket.io)\n  4. WhatsApp MCP Inventory Agent (Model Context Protocol)\n  5. TaskPulse Kanban (React 19 + Tailwind v4)",
+      arsenal: "Vibe Coder Arsenal:\n  • Antigravity : Multi-agent code orchestration & verification loops\n  • Git         : Advanced history surgery, atomic commits, CI/CD\n  • VS Code     : Precision multi-cursor flow, custom LSP environments",
+      skills: "Core Matrix: Python, Django, PyTorch, Meta DINOv2, React 19, Socket.io, Node.js, Tailwind v4, PostgreSQL, SQLite.",
+      discord: "Joining Discord: Opening https://discord.gg/yem2HkTGN ...",
+      contact: "Direct contact:\n  • Email: gokulblee-code@users.noreply.github.com\n  • LinkedIn: https://www.linkedin.com/in/gokul-b-8aa694406_\n  • Discord: https://discord.gg/yem2HkTGN",
+      clear: "__CLEAR__"
+    };
+
+    function runCommand(cmd) {
+      cmd = cmd.trim().toLowerCase();
+      if (!cmd) return;
+
+      if (cmd === 'clear') {
+        termOutput.innerHTML = '';
+        return;
+      }
+
+      if (cmd === 'discord') {
+        window.open('https://discord.gg/yem2HkTGN', '_blank');
+      }
+
+      const userLine = document.createElement('p');
+      userLine.innerHTML = `<span class="text-emerald-400 font-bold">gokulblee@vibe:~$</span> <span class="text-white">${cmd}</span>`;
+      termOutput.appendChild(userLine);
+
+      const respLine = document.createElement('pre');
+      respLine.className = 'text-gray-300 font-mono whitespace-pre-wrap pl-4 text-xs';
+
+      if (commands[cmd]) {
+        respLine.innerText = commands[cmd];
+      } else {
+        respLine.innerText = `bash: command not found: ${cmd}. Type 'help' for valid routines.`;
+      }
+
+      termOutput.appendChild(respLine);
+      termOutput.scrollTop = termOutput.scrollHeight;
+    }
+
+    termInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        runCommand(termInput.value);
+        termInput.value = '';
+      }
+    });
+  </script>
 
 </body>
 </html>
